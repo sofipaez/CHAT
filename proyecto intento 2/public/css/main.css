@@ -1,0 +1,165 @@
+.header {
+    width: 100%;
+    height: 56px;
+    background-color:#5271FF;
+    color: white;
+    text-align: center;
+    font-family: 'Libre Franklin', sans-serif;
+    font-style:italic;
+}
+.memods{
+    text-align: center;
+    font-family: 'Libre Franklin', sans-serif;
+    margin: 40px auto;
+    width: 100%;
+    color: #5271FF;
+}
+.sections{
+    background-color: white;
+    margin: 25px auto;
+    border: 2px solid black;
+    border-radius: 40px;
+    width: 80%;
+
+}
+.body {
+    text-align: center;
+}
+.card {
+    width: 150px;
+    height: 150px;
+}
+  
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s;
+    transform-style: preserve-3d;
+}
+  
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+  
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+  
+.card-front img,
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Crea 4 columnas iguales */
+    grid-template-rows: repeat(3, 1fr); /* Crea 3 filas iguales */
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centra horizontalmente las imágenes en cada celda */
+    align-items: center; /* Centra verticalmente las imágenes en cada celda */
+    width: 60%; /* Ajusta el ancho del section según sea necesario */
+    margin: 50px auto; /* Centra el section horizontalmente */    
+}
+
+.memods{
+    text-align: center;
+    font-family: 'Libre Franklin', sans-serif;
+    margin: 20px auto;
+    width: 100%;
+    color: #5271FF;
+}
+
+.niveles{
+    font-family: 'Libre Franklin', sans-serif;
+    color: black;
+    width: 30%;
+    text-align: center;
+    margin: 20px;
+}
+
+.puntaje{
+    font-family: 'Libre Franklin', sans-serif;
+    color: black;
+    align-self: center; /* Alinea el elemento a la parte inferior */
+    margin-top: -300px; /* Margen superior para separarlo un poco más abajo */
+    margin-left: -140px;
+}    
+
+.section-container{
+    display: flex;
+    align-items: flex-start;
+
+}
+.puntaje-numero{
+    background-color: #D9D9D9;
+    text-align: center;
+    border-radius: 100px;
+    padding: 10px;
+    margin-left: 100px;
+    overflow: auto;
+}
+
+.mascota{
+    display: none;
+    margin-top: 110px
+}
+
+body {
+    transition: filter 0.5s ease; /* Transición suave para el filtro */
+}
+/* Estilos para el contenedor de la tabla */
+.table-container {
+    margin: 20px; /* Agrega margen alrededor del contenedor */
+}
+  
+  /* Estilos para la tabla */
+table {
+    width: 50%; /* Ajusta el ancho de la tabla según tus preferencias */
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    border-collapse: collapse; /* Colapsar los bordes de las celdas */
+    border: 2px solid #000; /* Agregar un borde a la tabla */
+}
+  
+  /* Estilos para las filas pares */
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+  
+  /* Estilos para las celdas */
+td {
+    padding: 8px; /* Espaciado interno en las celdas */
+    border: 1px solid #ccc; /* Borde de las celdas */
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Crea 4 columnas iguales */
+    grid-template-rows: repeat(4, 1fr); /* Crea 4 filas iguales */
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centra horizontalmente las imágenes en cada celda */
+    align-items: center; /* Centra verticalmente las imágenes en cada celda */
+    width: 60%; /* Ajusta el ancho del section según sea necesario */
+    margin: 50px auto; /* Centra el section horizontalmente */    
+}
+
+.grid-container3 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Crea 5 columnas iguales */
+    grid-template-rows: repeat(4, 1fr); /* Crea 4 filas iguales */
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-items: center; /* Centra horizontalmente las imágenes en cada celda */
+    align-items: center; /* Centra verticalmente las imágenes en cada celda */
+    width: 60%; /* Ajusta el ancho del section según sea necesario */
+    margin: 50px auto; /* Centra el section horizontalmente */    
+}

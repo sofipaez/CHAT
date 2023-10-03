@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Proyecto Interdisciplinario</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/main.css" media="all"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@900&display=swap" rel="stylesheet">
+    </head>
+    <body class="container">
+        <div id="overlay"></div> <!-- Capa para la imagen de carga -->
+        <header class="memods">
+            <h1>MEMODS</h1>
+           <h5>Memoricemos el desarrollo</h5>
+        </header>
+       <main>
+            <h2 class="niveles">NIVEL 1</h2>
+            <div class="section-container">
+                <section id="nivel1" class="grid-container">
+                    <div class="card" id="card1" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods1.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card1 = document.querySelector("#card1");
+                            card1.addEventListener("click", function () {
+                                card1.classList.toggle("flip");
+                            });
+                    
+                        </script>
+                    </div>
+                    <div class="card" id="card1par">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods1.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card1par = document.querySelector("#card1par");
+                            card1par.addEventListener("click", function () {
+                                card1par.classList.toggle("flip");
+                            });
+                    
+                        </script>
+                    </div>
+                    <div class="card" id="card2">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods2.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card2 = document.querySelector("#card2");
+                            card2.addEventListener("click", function () {
+                                card2.classList.toggle("flip");
+                            });
+                    
+                        </script>
+                    </div>
+                    <div class="card" id="card2par">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods2.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card2par = document.querySelector("#card2par");
+                            card2par.addEventListener("click", function () {
+                                card2par.classList.toggle("flip");
+                            });
+                    
+                        </script>
+                    </div>
+                    <div class="card" id="card3" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods3.png" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card3 = document.querySelector("#card3");
+                            card3.addEventListener("click", function () {
+                                card3.classList.toggle("flip");
+                            });
+                        </script>
+                    </div>
+                    <div class="card" id="card3par" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods3.png" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card3par = document.querySelector("#card3par");
+                            card3par.addEventListener("click", function () {
+                                card3par.classList.toggle("flip");
+                            })
+                        </script>
+                    </div>
+                    <div class="card" id="card4" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods4.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card4 = document.querySelector("#card4");
+                            card4.addEventListener("click", function () {
+                                card4.classList.toggle("flip");
+                            });
+                        </script>
+                    </div>
+                    <div class="card" id="card4par" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods4.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                        <script>
+                            const card4par = document.querySelector("#card4par");
+                            card4par.addEventListener("click", function () {
+                                card4par.classList.toggle("flip");
+                            })
+                        </script>
+                    </div>
+                    <div class="card" id="card5" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods5.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const card5 = document.querySelector("#card5");
+                        card5.addEventListener("click", function () {
+                            card5.classList.toggle("flip");
+                        });
+                    </script>
+                    <div class="card" id="card5par" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods5.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        const card5par = document.querySelector("#card5par");
+                        card5par.addEventListener("click", function () {
+                            card5par.classList.toggle("flip");
+                        })
+                    </script>
+                    <div class="card" id="card6" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods6.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        const card6 = document.querySelector("#card6");
+                        card6.addEventListener("click", function () {
+                            card6.classList.toggle("flip");
+                        });
+                    </script>
+                    <div class="card" id="card6par" >
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="images/carta_general.jpg" alt="Imagen 1">
+                            </div>
+                            <div class="card-back">
+                                <img src="images/ods6.jpg" alt="Detrás de la imagen 1">
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        const card6par = document.querySelector("#card6par");
+                        card6par.addEventListener("click", function () {
+                            card6par.classList.toggle("flip");
+                        })
+                    </script>
+                </section>
+                <section class="puntaje">
+                    <h4>PUNTAJE</h4>
+                    <div class="puntaje-numero">
+                        <h6 id="puntajecito"></h6>
+                    </div>
+                    <div class="mascota" id="mascota">
+                        <img src="images/chaboncito.jpg">
+                    </div>     
+                </section>
+            </div>
+        </main>
+        <script src="Functions/function.js"></script>
+    </body>
+
+</html>

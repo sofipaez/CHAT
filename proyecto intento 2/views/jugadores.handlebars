@@ -1,0 +1,21 @@
+<div class="memods">
+    <h1>MEMODS</h1>
+    <h3>Memoricemos el desarrollo</h3>
+</div>
+
+<div class="table-container">
+<table class="table" id="tabla" style="width: 90%;font-family: revert;font-size: 25px;">
+    <tr style="background-color: lightblue;color: #5271FF;height: 85px;">
+        <th>Usuario</th>
+        <th>Puntaje</th>
+    </tr>
+
+    {{#each usuarios}}
+    <tr>
+        <td>{{this.usuario}}</td>
+        <td>{{this.puntuacion_max}}</td>
+    </tr>
+    {{/each}}
+</table>
+</div>
+

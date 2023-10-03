@@ -1,0 +1,29 @@
+<h1 class="memods" style=" margin: 10px auto;color: #eb4242;">ADMINISTRADOR:</h1>
+<section class="sections">
+    <form action="/admin_ods" method="POST" id="form3" class="container-sm">
+        <h5 class="memods" style=" margin: 10px auto;color: #eb4242;">Cambiar descripcion de ODS:</h5>
+        <div class="mb-3 form-group">
+            <label for="id_ods_admin" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #eb4242;"> ID del ODS a cambiar:</label>
+            <input type="text" class="form-control" id="id_ods_admin" name="id_ods_admin" value="" placeholder="Ingrese la ID del ODS" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
+        </div>
+        <div class="mb-3 form-group">
+            <label for="descripcion_ods" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #eb4242;"> Nueva descripcion:</label>
+            <input type="text" class="form-control" id="descripcion_ods" name="descripcion_ods" value="" placeholder="Ingrese la nueva descripcion" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
+        </div>
+        <div class="mb-3 form-check" style="display: flex; justify-content: center;">
+            <input type="submit" class="btn btn-primary" value="Cambiar ODS" style="background-color:#eb4242;height: 65px;width: 25%;font-family: 'Libre Franklin', sans-serif;font-size: 30px;" >
+        </div>
+    </form>
+</section>
+<section class="sections">
+    <form action="/admin_puntaje" method="POST" id="form4" class="container-sm">
+        <h5 class="memods" style=" margin: 10px auto;color: #eb4242;"> Eliminar puntaje de un jugador:</h5>
+        <div class="mb-3 form-group">
+            <label for="dni_admin" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #eb4242;"> DNI del jugador:</label>
+            <input type="text" class="form-control" id="dni_admin" name="dni_admin" value="" placeholder="Ingrese el DNI del jugador" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
+        </div>
+        <div class="mb-3 form-check" style="display: flex; justify-content: center;">
+            <input type="submit" class="btn btn-primary" value="Eliminar puntaje" style="background-color:#eb4242;height: 65px;width: 30%;font-family: 'Libre Franklin', sans-serif;font-size: 30px;" >
+        </div>
+    </form>
+</section>
