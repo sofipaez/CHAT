@@ -1,19 +1,4 @@
-.header {
-    width: 100%;
-    height: 56px;
-    background-color:#5271FF;
-    color: white;
-    text-align: center;
-    font-family: 'Libre Franklin', sans-serif;
-    font-style:italic;
-}
-.memods{
-    text-align: center;
-    font-family: 'Libre Franklin', sans-serif;
-    margin: 40px auto;
-    width: 100%;
-    color: #5271FF;
-}
+
 .sections{
     background-color: white;
     margin: 25px auto;
@@ -74,10 +59,10 @@
 
 .memods{
     text-align: center;
-    font-family: 'Libre Franklin', sans-serif;
-    margin: 20px auto;
+    font-family: Tahoma;
+    margin: 100px auto;
     width: 100%;
-    color: #5271FF;
+    color: #3c7443;
 }
 
 .niveles{
@@ -162,4 +147,5 @@ td {
     align-items: center; /* Centra verticalmente las imágenes en cada celda */
     width: 60%; /* Ajusta el ancho del section según sea necesario */
     margin: 50px auto; /* Centra el section horizontalmente */    
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
