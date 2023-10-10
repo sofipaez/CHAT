@@ -17,11 +17,9 @@ async function putJSON(data) {
       if (result.validar == false) {
         alert("Los datos son incorrectos")
       } else {
-        if (result.admin==true){
-          location.href ='/admin';
-        } else{
-          location.href ='/nivel1';
-        }
+        
+          location.href ='/chats';
+        
         //Envio el formularia desde dom para cambiar de pagina
         //Podria usar tambien un changeScreen()
       }
