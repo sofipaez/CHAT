@@ -351,7 +351,18 @@ document.addEventListener('DOMContentLoaded', function () {
   shuffleAndDisplayCards('nivelx');
 });
 
+var data = {
+  messages: [
+    { message: 'Hola, ¿cómo estás?', isUser: true },
+    { message: '¡Hola! Estoy bien, gracias.', isUser: false },
+    { message: '¿En qué puedo ayudarte?', isUser: false },
+  ]
+};
 
+var source = document.getElementById("chat-template").innerHTML;
+var template = Handlebars.compile(source);
+var html = template(data);
+document.getElementById("chat-container").innerHTML = html;
 
 
 

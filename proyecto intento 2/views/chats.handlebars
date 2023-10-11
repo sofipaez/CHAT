@@ -1,38 +1,10 @@
-<section class="sections">
-    <form action="/registro" method="POST" id="form2" class="container-sm">
-    <h3 class="memods" style=" margin: 10px auto;color: #FFBD59"> Registro</h3>
-    <div class="mb-3 form-group">
-            <label for="dni" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #FFBD59;">DNI</label>
-            <input type="text" class="form-control" id="dni" name="dni" value="" placeholder="Ingrese su nombre DNI" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
-        </div>
-        <div class="mb-3 form-group">
-            <label for="usuario" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #FFBD59;">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" value="" placeholder="Ingrese su nombre de usuario" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
-        </div>
-        <div class="mb-3 form-group">
-            <label for="nombre_completo" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #FFBD59;">Nombre</label>
-            <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" value="" placeholder="Ingrese su nombre" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
-        </div>
-        <div class="mb-3 form-group">
-            <label for="gmail" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #FFBD59;">Correo electronico</label>
-            <input type="text" class="form-control" id="gmail" name="gmail" value="" placeholder="Ingrese su correo electronico" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
-        </div>
-        
-        <div class="mb-3 form-group">
-            <label for="contraseña" class="form-label" style="font-family: 'Libre Franklin', sans-serif;color: #FFBD59;">Contraseña</label>
-            <input type="password" class="form-control" id="contraseña" name="contraseña" value="" placeholder="Ingrese su contraseña" style="background-color: #EBEBEB;margin-left:12px;width: 95%;border-radius: 10px;">
-        </div>
-    </form>
-    <form action="/jugar" method="GET" class="container-sm">
-        <div class="mb-3 form-check" style="display: flex; justify-content: center;">
-            <input type="button" onclick="registrarse()" class="btn btn-primary" value="Jugar" style="background-color:#76BDBF;height: 65px;width: 200px;font-family: 'Libre Franklin', sans-serif;font-size: 30px;border-color:transparent">  
-        </div>
-    </form>
-    <form action="/" method="GET" class="container-sm">
-        <div class="mb-3 form-check" style="display: flex; justify-content: center;">
-            <input type="button" onclick= "location.href='/'"class="btn btn-primary" value="Volver al inicio" style="background-color:#d11414;height: 35px;width: 150px;font-family: 'Libre Franklin', sans-serif;font-size: 15px;border-color:transparent">
-        </div>
-    </form>
+<script id="chat-template" type="text/x-handlebars-template">
+  {{#each messages}}
+    <div class="message {{#if isUser}}user{{else}}recipient{{/if}}">
+      {{message}}
+    </div>
+  {{/each}}
+  
+</script>
 
-</section>
-    
+<div id="chat-container"></div>

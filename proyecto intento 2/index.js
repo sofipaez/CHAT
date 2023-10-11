@@ -93,15 +93,11 @@ app.put('/login', async function(req, res)
     //En req.body vamos a obtener el objeto con los parámetros enviados desde el frontend por método POST
     let admin=false
 
-    let respuesta= await MySQL.realizarQuery(`SELECT * FROM Usuarios WHERE usuario = "${req.body.usuario_login}" AND contraseña="${req.body.contraseña_login}"` )
+    let respuesta= await MySQL.realizarQuery(`SELECT * FROM Contactos WHERE IDContacto = "${req.body.usuario_login}" AND Password="${req.body.contraseña_login}"` )
     console.log(respuesta)
     if (respuesta.length>0){
-        if (req.body.usuario_login == "sopa") {
-            res.send({validar:true, admin:true})    
-        }
-        else{
             res.send({validar:true, admin:false})    
-        }
+        
         
     } else{
         res.send({validar:false})
@@ -143,9 +139,12 @@ io.on("connection", (socket) => {
     // es igual al app.get y al app.post 
     socket.on('incoming-message', data => {
         console.log("INCOMING MESSAGE:", data);
+        io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"});
     });
 
     socket.on('join-room', data => {
         console.log("INCOMING MESSAGE:", data);
     });
 });
+
+setInterval (() => io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"}), 2000);
