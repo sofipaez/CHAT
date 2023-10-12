@@ -11,6 +11,11 @@
         <div class="contact-menu">
             <div class="search-bar">
                 <input type="text" placeholder="Buscar contactos..."><br>
+                <select>
+                {{#each contactos}}
+                    <option>{{this.NombreChat}}</option>
+                {{/each}}
+                </select>
             </div>
             <div class="contact-list">
                 {{#each chats}}

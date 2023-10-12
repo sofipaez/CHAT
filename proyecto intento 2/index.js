@@ -110,11 +110,15 @@ app.delete('/login', function(req, res) {
     res.send(null);
 });
 
-app.get('/chats',function(req, res){
+app.get('/chats',async function(req, res){
     //Petición GET con URL = "/login"
-    console.log("Soy un pedido GET, voy al registro", req.query); 
+    console.log("Soy un pedido GET, voy al CHAT", req.query); 
+    let chats= await MySQL.realizarQuery(`SELECT NombreChat FROM Chats`)
+    console.log(chats);
     //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
-    res.render('chats', null); //Renderizo página "home" sin pasar ningún objeto a Handlebars
+    res.render('chats',{contactos:chats});
+    //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
+     //Renderizo página "home" sin pasar ningún objeto a Handlebars
 });
 
 app.post('/chats', async function(req, res)
