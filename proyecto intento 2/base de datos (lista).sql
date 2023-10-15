@@ -31,12 +31,16 @@ CREATE TABLE Contactos_Chats(
 );
 
 INSERT INTO Chats (IDChat, NombreChat) VALUES (1,"mama"), (2,"quinto b info"), (3,"FEDE"), (4,"cumple de uche");
+INSERT INTO Chats(NombreChat) VALUES ("matu");
 INSERT INTO Contactos (IDContacto, User, Password) VALUES (987, "mariana", "123"),(12,"SOFI","2"),(1254, "MATIAS GALETTO","mg90");
 INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES (1,987,"2023-09-10", "que vamos a comer?");
 INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES (2,12,"2023-09-10", "madno tarea carrizo?");
 INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES (3,1254,"2023-09-10", "que vamos a comer?");
 INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES (4,12,"2023-09-10", "FELIZ CUMPLE!!!");
+INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES (1,12,"2023-10-15", "milanesa con pure");
 INSERT INTO Contactos_Chats (IDChat, IDContacto) VALUES (1, 987);
 INSERT INTO Contactos_Chats (IDChat, IDContacto) VALUES (2, 12);
 INSERT INTO Contactos_Chats (IDChat, IDContacto) VALUES (3, 1254);
 INSERT INTO Contactos_Chats (IDChat, IDContacto) VALUES (4, 12);
+INSERT INTO Contactos_Chats(IDContacto, IDChat) VALUES (6,1254);
+INSERT INTO Contactos_Chats (IDChat,IDContacto) VALUES (6, 12);

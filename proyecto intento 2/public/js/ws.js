@@ -13,3 +13,6 @@ socket.on("server-message", data =>{
 function funcionPrueba(){
     socket.emit("incoming-message", {mensaje: "PRUEBA"});
 }
+function enviarMensaje(){
+    enviarMensajeGeneral(document.getElementById("message-input").value);
+}

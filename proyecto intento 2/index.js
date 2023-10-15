@@ -60,7 +60,7 @@ io.use(function(socket,next) {
 app.get('/', function(req, res)
 {
     //Petición GET con URL = "/", lease, página principal.
-    req.session.puntaje = 0
+    req.session.usuario_login = 0
     console.log(req.query); //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
     res.render('inicio', null); //Renderizo página "login" sin pasar ningún objeto a Handlebars
 });
@@ -96,7 +96,7 @@ app.put('/login', async function(req, res)
     let respuesta= await MySQL.realizarQuery(`SELECT * FROM Contactos WHERE IDContacto = "${req.body.usuario_login}" AND Password="${req.body.contraseña_login}"` )
     console.log(respuesta)
     if (respuesta.length>0){
-            res.send({validar:true, admin:false})    
+            res.send({validar:true, admin:false})
         
         
     } else{
@@ -113,7 +113,7 @@ app.delete('/login', function(req, res) {
 app.get('/chats',async function(req, res){
     //Petición GET con URL = "/login"
     console.log("Soy un pedido GET, voy al CHAT", req.query); 
-    let chats= await MySQL.realizarQuery(`SELECT NombreChat FROM Chats`)
+    let chats= await MySQL.realizarQuery(`select NombreChat,Chats.IDChat FROM Chats INNER JOIN Contactos_Chats ON Chats.IDChat = Contactos_Chats.IDChat WHERE IDContacto = 12;`)
     console.log(chats);
     //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
     res.render('chats',{contactos:chats});
