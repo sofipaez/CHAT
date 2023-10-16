@@ -7,8 +7,13 @@
     width: 80%;
 
 }
+
 .body {
     text-align: center;
+    font-family: 'Libre Franklin', sans-serif;
+    margin: 40px auto;
+    width: 100%;
+    color: #5271FF;
 }
 
 .body {
@@ -63,7 +68,6 @@ td {
 
 .body {
     font-family: Arial, sans-serif;
-    color:#0084ff;
     margin: 0;
     padding: 0;
 }
