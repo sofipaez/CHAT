@@ -6,8 +6,8 @@ socket.on("connect", () =>{
 });
 
 
-socket.on("server-message", data =>{
-    console.log("Me llegó del servidor", data);
+socket.on("server-message", function (data){
+    io.socket.emit("Nuevo mensaje", data);
 });
 
 function funcionPrueba(){
@@ -16,3 +16,4 @@ function funcionPrueba(){
 function enviarMensaje(){
     enviarMensajeGeneral(document.getElementById("message-input").value);
 }
+

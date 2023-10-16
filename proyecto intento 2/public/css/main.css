@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-body {
+.body {
     transition: filter 0.5s ease; /* Transición suave para el filtro */
 }
 /* Estilos para el contenedor de la tabla */
@@ -20,7 +20,7 @@ body {
 }
   
   /* Estilos para la tabla */
-table {
+.table {
     width: 50%; /* Ajusta el ancho de la tabla según tus preferencias */
     margin: 0 auto; /* Centrar la tabla horizontalmente */
     border-collapse: collapse; /* Colapsar los bordes de las celdas */
@@ -61,8 +61,9 @@ td {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+.body {
     font-family: Arial, sans-serif;
+    color:#0084ff;
     margin: 0;
     padding: 0;
 }
