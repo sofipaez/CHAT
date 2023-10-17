@@ -45,6 +45,8 @@ app.use(sessionMiddleware)
 io.use(function(socket,next) {
     sessionMiddleware(socket.request, socket.request.res, next);
 })
+
+app.use(session({secret: '123456', resave: true, saveUninitialized: true})); 
 /*
     A PARTIR DE ESTE PUNTO GENERAREMOS NUESTRO CÓDIGO (PARA RECIBIR PETICIONES, MANEJO DB, ETC.)
     A PARTIR DE ESTE PUNTO GENERAREMOS NUESTRO CÓDIGO (PARA RECIBIR PETICIONES, MANEJO DB, ETC.)
@@ -92,7 +94,7 @@ app.put('/login', async function(req, res)
     console.log("Soy un pedido PUT", req.body); 
     //En req.body vamos a obtener el objeto con los parámetros enviados desde el frontend por método POST
     let admin=false
-
+    req.session.idUser = req.body.usuario_login
     let respuesta= await MySQL.realizarQuery(`SELECT * FROM Contactos WHERE IDContacto = "${req.body.usuario_login}" AND Password="${req.body.contraseña_login}"` )
     console.log(respuesta)
     if (respuesta.length>0){
@@ -102,6 +104,7 @@ app.put('/login', async function(req, res)
     } else{
         res.send({validar:false})
     }
+    console.log(req.session.idUser)
 });
 
 app.delete('/login', function(req, res) {
@@ -113,7 +116,7 @@ app.delete('/login', function(req, res) {
 app.get('/chats',async function(req, res){
     //Petición GET con URL = "/login"
     console.log("Soy un pedido GET, voy al CHAT", req.query); 
-    let chats= await MySQL.realizarQuery(`select NombreChat,Chats.IDChat FROM Chats INNER JOIN Contactos_Chats ON Chats.IDChat = Contactos_Chats.IDChat WHERE IDContacto = 12;`)
+    let chats= await MySQL.realizarQuery(`select NombreChat,Chats.IDChat FROM Chats INNER JOIN Contactos_Chats ON Chats.IDChat = Contactos_Chats.IDChat WHERE IDContacto = "${req.session.idUser}";`)
     console.log(chats);
     //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
     res.render('chats',{contactos:chats});
@@ -146,9 +149,15 @@ io.on("connection", (socket) => {
         io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"});
     });
 
-    socket.on('join-room', data => {
-        console.log("INCOMING MESSAGE:", data);
-    });
+    socket.on('room', sala => {
+        socket.join("room"+sala.chat)
+        nombre=sala.chat
+        contacto=sala.nombre_contacto
+        req.session.room="room"+sala.chat;
+        io.to(req.session.room).emit('UnirmealChat', contacto )
+
+       
+    })
 });
 
 setInterval (() => io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"}), 2000);

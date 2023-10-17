@@ -13,6 +13,25 @@ socket.on("server-message", data =>{
 function funcionPrueba(){
     socket.emit("incoming-message", {mensaje: "PRUEBA"});
 }
+
+function Unirse(div){
+    console.log(div.id)
+    console.log(div.title)
+    sala={
+        chat:div.id,
+        nombre_contacto:div.title,
+    }
+    socket.emit('room', sala)
+}
+
+
 function enviarMensaje(){
     enviarMensajeGeneral(document.getElementById("message-input").value);
 }
+
+socket.on("UnirmealChat",contacto => {
+    console.log(contacto)
+    //mensajesviejos()
+    document.getElementById("nombre_contacto").innerHTML =`
+    <h6> ${contacto} </h6>`
+})

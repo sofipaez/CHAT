@@ -12,12 +12,15 @@
             <div class="search-bar">
                 <input type="text" placeholder="Buscar contactos..."><br>
                 {{#each contactos}}
-                    <input type="button" id="{{this.IDChat}}" onclick="Unirse()" class="btn btn-primary" value="{{this.NombreChat}}">  
+                    <div id="{{this.IDChat}}" onclick="Unirse(this)" class="btn btn-primary" style="display: flow;" title="{{this.NombreChat}}">{{this.NombreChat}}</div>
                 {{/each}}
             </div>
             
         </div>
         <div class="chat-container">
+            <div id="nombre_contacto">
+
+            </div>
             
             <div class="chat-messages">
                 <div class="message received">
