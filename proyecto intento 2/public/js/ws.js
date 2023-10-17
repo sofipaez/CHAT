@@ -29,9 +29,23 @@ function enviarMensaje(){
     enviarMensajeGeneral(document.getElementById("message-input").value);
 }
 
+<<<<<<< Updated upstream
 socket.on("UnirmealChat",contacto => {
     console.log(contacto)
     //mensajesviejos()
     document.getElementById("nombre_contacto").innerHTML =`
     <h6> ${contacto} </h6>`
 })
+=======
+$(function(){
+    // variables
+    var message = $('#chat-message');
+    var chat =('#chat');
+    
+    $('#message-box').sumbit(function(e){
+        e.preventDefault();
+        chat.append(message.val());
+    });
+
+});
+>>>>>>> Stashed changes

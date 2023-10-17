@@ -8,9 +8,10 @@
 </head>
 <body>
     <section class="section-container">
+        <div id="chat"></div>
         <div class="contact-menu">
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar contactos..."><br>
+            <div class="search-bar" id="message-box">
+                <input type="text" id="text-message" placeholder="Buscar contactos..."><br>
                 {{#each contactos}}
                     <div id="{{this.IDChat}}" onclick="Unirse(this)" class="btn btn-primary" style="display: flow;" title="{{this.NombreChat}}">{{this.NombreChat}}</div>
                 {{/each}}
@@ -38,5 +39,14 @@
             </form>
         </div>
     </section>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous">
+    </script> 
+    <script src="ws.js" charset="UTF-8"></script>
 </body>
 </html>
+
+
+    

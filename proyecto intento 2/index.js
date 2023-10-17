@@ -161,3 +161,4 @@ io.on("connection", (socket) => {
 });
 
 setInterval (() => io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"}), 2000);
+
