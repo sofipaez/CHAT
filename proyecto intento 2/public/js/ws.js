@@ -29,14 +29,13 @@ function enviarMensaje(){
     enviarMensajeGeneral(document.getElementById("message-input").value);
 }
 
-<<<<<<< Updated upstream
+
 socket.on("UnirmealChat",contacto => {
     console.log(contacto)
     //mensajesviejos()
     document.getElementById("nombre_contacto").innerHTML =`
     <h6> ${contacto} </h6>`
 })
-=======
 $(function(){
     // variables
     var message = $('#chat-message');
@@ -48,4 +47,3 @@ $(function(){
     });
 
 });
->>>>>>> Stashed changes
