@@ -146,6 +146,9 @@ io.on("connection", (socket) => {
     const req = socket.request;
     // es igual al app.get y al app.post 
     socket.on('incoming-message', data => {
+        ingresarmensaje=data.mensaje
+        console.log(ingresarmensaje)
+        //saveMessage(ingresarmensaje,req.session)
         console.log("INCOMING MESSAGE:", data);
         io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"});
     });
@@ -161,10 +164,16 @@ io.on("connection", (socket) => {
         req.session.room="room"+sala.chat;
         req.session.save()
         io.to(req.session.room).emit('UnirmealChat', contacto )
-        
-
-       
     })
+
+    socket.on("server-message", data => {
+        console.log(data)
+        let mensajeneviado = `<div id="mensaje_enviado" class="message sent">
+            <p>${data.mensaje}</p>
+             </div>`
+        document.getElementById("mensajesviejos").innerHTML += mensajeneviado;
+    })
+
 });
 
 setInterval (() => io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"}), 2000);
@@ -181,3 +190,14 @@ app.put('/mensajesantiguos', async function(req, res) {
     }
     
 });
+
+
+
+async function saveMessage(data, session){
+    console.log(session.idUser)
+    console.log(session.sala)
+    const date= Date.now()
+    console.log(date)
+    ingresarelmensaje= await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${session.sala}","${session.idUser}","${date}", "${data}");`)
+}
+

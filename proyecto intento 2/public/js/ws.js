@@ -27,8 +27,15 @@ function Unirse(div){
 
 
 function enviarMensaje(){
-    enviarMensajeGeneral(document.getElementById("message-input").value);
-}
+    nuevomensaje=document.getElementById("message-input").value
+    if (nuevomensaje !=""){
+        data={
+            mensaje:nuevomensaje
+        }
+        socket.emit("incoming-message", {mensaje:nuevomensaje});
+        document.getElementById("message-input").value="";
+    } }
+    
 
 
 socket.on("UnirmealChat",contacto => {
@@ -50,3 +57,12 @@ $(function(){
     });
 
 });
+socket.on("incoming-message",data => {
+    console.log(data)
+    let mensajeneviado = `<div id="mensaje_enviado" class="message sent">
+        <p>${data.mensaje}</p>
+            </div>`
+    document.getElementById("mensajesviejos").innerHTML += mensajeneviado;
+    
+    
+})

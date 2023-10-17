@@ -20,20 +20,12 @@
         </div>
         <div class="chat-container">
             <div id="nombre_contacto"></div>
-            <div class="chat-messages" id="mensajesviejos">
-                <div id="mensaje_recibido" class="message received">
-                    <p>Hola, ¿cómo estás?</p>
-                </div>
-                <div id="mensaje_enviado" class="message sent">
-                    <p>¡Hola! Estoy bien, gracias.</p>
-                </div>
+            <div class="chat-messages" id="mensajesviejos"> 
             </div>
-            <form action="/enviar" method="POST">
                 <div class="input-container">
                     <input type="text" id="message-input" placeholder="Escribe un mensaje...">
                     <input type="button" onclick="enviarMensaje()" class="btn btn-primary" id="send-button" value="Enviar">
                 </div>
-            </form>
         </div>
     </section>
     <script

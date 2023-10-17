@@ -74,15 +74,12 @@ async function mensajesviejos() {
     //En result obtengo la respuesta
     const result = await response.json();
     console.log("Success:", result);
-    let vectos=result.mensajes
     let contacto = result.idcontacto
     console.log("mensajes", result.mensajes)
     let mostrarmensajes=``
     
     for (let i =0;i < result.mensajes.length; i++){
       const element = result.mensajes[i]
-      console.log("mensjae", element.mensaje)
-      console.log("usuario", element.IDContacto)
       if(element.IDContacto != contacto){
         mostrarmensajes= `<div id="mensaje_recibido" class="message received">
         <p>${element.mensaje}</p>
@@ -98,4 +95,11 @@ async function mensajesviejos() {
   } catch (error) {
     console.error("Error:", error);
   }
+}
+
+function nuevomensaje(data){
+  let mensajeneviado = `<div id="mensaje_enviado" class="message sent">
+          <p>${data.mensaje}</p>
+           </div>`
+      document.getElementById("mensajesviejos").innerHTML += mensajeneviado;
 }
