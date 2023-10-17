@@ -154,12 +154,13 @@ io.on("connection", (socket) => {
         socket.join("room"+sala.chat)
         chatid=sala.chat
         contacto=sala.nombre_contacto
-        let mensajes_viejos=await MySQL.realizarQuery(`select mensaje from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${chatid}"`)
-        console.log(mensajes_viejos)
-        let mensajes_usuario= await MySQL.realizarQuery(`select mensaje from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${chatid}" and IDContacto= "${req.session.idUser}"; `)
-        console.log(mensajes_usuario)
+        req.session.sala=sala.chat
+        //let mensajes_usuario= await MySQL.realizarQuery(`select mensaje from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${chatid}" and IDContacto= "${req.session.idUser}"; `)
+        //console.log(mensajes_usuario)
+        //let mensaje1=mensajes_usuario[0].mensaje
         req.session.room="room"+sala.chat;
-        io.to(req.session.room).emit('UnirmealChat', contacto, mensajes_viejos,mensajes_usuario )
+        req.session.save()
+        io.to(req.session.room).emit('UnirmealChat', contacto )
         
 
        
@@ -168,3 +169,15 @@ io.on("connection", (socket) => {
 
 setInterval (() => io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"}), 2000);
 
+app.put('/mensajesantiguos', async function(req, res) {
+    let mensajes_viejos=await MySQL.realizarQuery(`select mensaje,IDContacto from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${req.session.sala}"`)
+    //console.log(mensajes_viejos)
+    //console.log(req.session.sala)
+    //console.log(req.session.idUser)
+    if (mensajes_viejos.length>0){
+        res.send({mensajes:mensajes_viejos,idcontacto:req.session.idUser})
+    } else {
+        res.send({mensajes: false})
+    }
+    
+});

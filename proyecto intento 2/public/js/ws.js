@@ -33,11 +33,11 @@ function enviarMensaje(){
 
 socket.on("UnirmealChat",contacto => {
     console.log(contacto)
-    //mensajesviejos()
+    mensajesviejos()
     document.getElementById("nombre_contacto").innerHTML =`
     <h6> ${contacto} </h6>`
-    document.getElementById("mensaje_enviado").innerHTML =`
-    <p>${mensajes_usuario}</p>`
+    
+    
 })
 $(function(){
     // variables
