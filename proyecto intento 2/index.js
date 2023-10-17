@@ -134,6 +134,7 @@ app.post('/chats', async function(req, res)
 app.put('/chats', async function(req, res) {
     console.log("Soy un pedido PUT /registro", req.body);
     res.render('chats', null);
+    
 });
 
 app.delete('/chats', function(req, res) {
@@ -149,12 +150,17 @@ io.on("connection", (socket) => {
         io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"});
     });
 
-    socket.on('room', sala => {
+    socket.on('room', async (sala) => {
         socket.join("room"+sala.chat)
-        nombre=sala.chat
+        chatid=sala.chat
         contacto=sala.nombre_contacto
+        let mensajes_viejos=await MySQL.realizarQuery(`select mensaje from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${chatid}"`)
+        console.log(mensajes_viejos)
+        let mensajes_usuario= await MySQL.realizarQuery(`select mensaje from Mensajes inner join Chats on Mensajes.IDChat =  Chats.IDChat where Chats.IDChat = "${chatid}" and IDContacto= "${req.session.idUser}"; `)
+        console.log(mensajes_usuario)
         req.session.room="room"+sala.chat;
-        io.to(req.session.room).emit('UnirmealChat', contacto )
+        io.to(req.session.room).emit('UnirmealChat', contacto, mensajes_viejos,mensajes_usuario )
+        
 
        
     })

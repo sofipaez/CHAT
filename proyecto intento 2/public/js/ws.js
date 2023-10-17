@@ -22,6 +22,7 @@ function Unirse(div){
         nombre_contacto:div.title,
     }
     socket.emit('room', sala)
+    
 }
 
 
@@ -35,6 +36,8 @@ socket.on("UnirmealChat",contacto => {
     //mensajesviejos()
     document.getElementById("nombre_contacto").innerHTML =`
     <h6> ${contacto} </h6>`
+    document.getElementById("mensaje_enviado").innerHTML =`
+    <p>${mensajes_usuario}</p>`
 })
 $(function(){
     // variables
