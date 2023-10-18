@@ -30,7 +30,6 @@ function Unirse(div){
     
 }
 
-
 function enviarMensaje(){
     nuevomensaje=document.getElementById("message-input").value
     if (nuevomensaje !=""){

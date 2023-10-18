@@ -184,8 +184,6 @@ app.put('/mensajesantiguos', async function(req, res) {
     
 });
 
-
-
 async function saveMessage(data, session){
     console.log(session.idUser)
     console.log(session.sala)
@@ -194,3 +192,19 @@ async function saveMessage(data, session){
     ingresarelmensaje= await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${session.sala}","${session.idUser}","${date}", "${data}");`)
 }
 
+app.put('/enviarMensaje', async function(req, res){
+    const datos = req.body;
+    let idChat = datos.idChat;
+    let IDContacto = datos.IDContacto;
+    let fecha = datos.fecha;
+    let mensaje = datos.mensaje;
+
+    let registrar = await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${idChat}","${IDContacto}","${fecha}", "${mensaje}");`)
+    SQL_CONFIGURATION_DATA.query(registrar, function(error){
+        if(error){
+            throw error;
+        }else{
+            res.send("Mensajes guardados correctamente");
+        }
+    })
+});

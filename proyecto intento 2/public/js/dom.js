@@ -59,8 +59,11 @@ var template = Handlebars.compile(source);
 var html = template(data);
 document.getElementById("chat-container").innerHTML = html;
 
-async function mensajesviejos() {
-  //putJSON() es solo el nombre de esta funcion que lo pueden cambiar    
+async function mensajesviejos(idChat) {
+  // Pasa el ID del chat como argumento para la función
+
+  // Limpia los mensajes anteriores antes de cargar los nuevos
+  document.getElementById("mensajesviejos").innerHTML = "";
 
   try {
     const response = await fetch("/mensajesantiguos", {
@@ -68,29 +71,28 @@ async function mensajesviejos() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({validar:true}),
+      body: JSON.stringify({ validar: true, idChat: idChat }), // Envía el ID del chat
     });
-    
-    //En result obtengo la respuesta
+
+    // En result obtengo la respuesta
     const result = await response.json();
     console.log("Success:", result);
-    let contacto = result.idcontacto
-    console.log("mensajes", result.mensajes)
-    let mostrarmensajes=``
-    for (let i =0;i < result.mensajes.length; i++){
-      const element = result.mensajes[i]
-      if(element.IDContacto != contacto){
-        mostrarmensajes= `<div id="mensaje_recibido" class="message received">
-        <p>${element.mensaje}</p>
-        </div>`
-      } else{
+    let contacto = result.idcontacto;
+    console.log("mensajes", result.mensajes);
+    let mostrarmensajes = ``;
+    for (let i = 0; i < result.mensajes.length; i++) {
+      const element = result.mensajes[i];
+      if (element.IDContacto != contacto) {
+        mostrarmensajes = `<div id="mensaje_recibido" class="message received">
+          <p>${element.mensaje}</p>
+        </div>`;
+      } else {
         mostrarmensajes = `<div id="mensaje_enviado" class="message sent">
-        <p>${element.mensaje}</p>
-         </div>`
+          <p>${element.mensaje}</p>
+        </div>`;
       }
-      document.getElementById("mensajesviejos").innerHTML += mostrarmensajes; 
+      document.getElementById("mensajesviejos").innerHTML += mostrarmensajes;
     }
-
   } catch (error) {
     console.error("Error:", error);
   }
