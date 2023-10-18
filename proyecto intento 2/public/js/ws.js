@@ -1,5 +1,6 @@
 const IP = "ws://localhost:3000";
 const socket = io(IP);
+let yaEnvie = -1
 
 socket.on("connect", () =>{
     console.log("Me conecté a WS");
@@ -8,10 +9,15 @@ socket.on("connect", () =>{
 
 socket.on("server-message", data =>{
     console.log("Me llegó del servidor", data);
-        console.log(data)
-        document.getElementById("mensajesviejos").innerHTML+=  `<div id="mensaje_enviado" class="message sent">
+    console.log(data)
+    if(yaEnvie == -1){
+        document.getElementById("mensajesviejos").innerHTML+=  `<div id="mensaje_enviado" class="message received">
             <p>${data.mensaje}</p>
              </div>`;
+    }
+    else{
+       yaEnvie = -1
+    }
         
 });
 
@@ -38,16 +44,20 @@ function enviarMensaje(){
         }
         socket.emit("incoming-message", {mensaje:nuevomensaje});
         document.getElementById("message-input").value="";
+
+        yaEnvie = 1;
+        document.getElementById("mensajesviejos").innerHTML+=  `<div id="mensaje_enviado" class="message sent">
+            <p>${data.mensaje}</p>
+             </div>`;
     } }
     
 
 
-socket.on("UnirmealChat",contacto => {
-    console.log(contacto)
+socket.on("UnirmealChat",data => {
+    console.log(data.contacto)
     mensajesviejos()
     document.getElementById("nombre_contacto").innerHTML =`
-    <h6> ${contacto} </h6>`
-    
+    <h6> ${data.contacto} </h6>`
     
 })
 $(function(){

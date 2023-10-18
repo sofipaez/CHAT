@@ -148,9 +148,9 @@ io.on("connection", (socket) => {
     socket.on('incoming-message', data => {
         ingresarmensaje=data.mensaje
         console.log(ingresarmensaje)
-        //saveMessage(ingresarmensaje,req.session)
+        saveMessage(ingresarmensaje,req.session)
         console.log("INCOMING MESSAGE:", data);
-        io.emit("server-message", data);
+        io.emit("server-message", {mensaje: data.mensaje, user: req.session.idUser});
     });
 
     socket.on('room', async (sala) => {
@@ -163,7 +163,7 @@ io.on("connection", (socket) => {
         //let mensaje1=mensajes_usuario[0].mensaje
         req.session.room="room"+sala.chat;
         req.session.save()
-        io.to(req.session.room).emit('UnirmealChat', contacto )
+        io.to(req.session.room).emit('UnirmealChat', {contacto:contacto, user: req.session.idUser})
     })
 
 
@@ -185,26 +185,9 @@ app.put('/mensajesantiguos', async function(req, res) {
 });
 
 async function saveMessage(data, session){
-    console.log(session.idUser)
-    console.log(session.sala)
-    const date= Date.now()
-    console.log(date)
-    ingresarelmensaje= await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${session.sala}","${session.idUser}","${date}", "${data}");`)
+    //console.log(session.idUser)
+    //console.log(session.sala)
+    ingresarelmensaje= await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${session.sala}","${session.idUser}",NOW(), "${data}");`)
+
 }
 
-app.put('/enviarMensaje', async function(req, res){
-    const datos = req.body;
-    let idChat = datos.idChat;
-    let IDContacto = datos.IDContacto;
-    let fecha = datos.fecha;
-    let mensaje = datos.mensaje;
-
-    let registrar = await MySQL.realizarQuery(`INSERT INTO Mensajes(IDChat,IDContacto, fecha, mensaje) VALUES ("${idChat}","${IDContacto}","${fecha}", "${mensaje}");`)
-    SQL_CONFIGURATION_DATA.query(registrar, function(error){
-        if(error){
-            throw error;
-        }else{
-            res.send("Mensajes guardados correctamente");
-        }
-    })
-});
