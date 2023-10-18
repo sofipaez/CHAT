@@ -8,6 +8,11 @@ socket.on("connect", () =>{
 
 socket.on("server-message", data =>{
     console.log("Me llegó del servidor", data);
+        console.log(data)
+        document.getElementById("mensajesviejos").innerHTML+=  `<div id="mensaje_enviado" class="message sent">
+            <p>${data.mensaje}</p>
+             </div>`;
+        
 });
 
 function funcionPrueba(){
@@ -57,12 +62,3 @@ $(function(){
     });
 
 });
-socket.on("incoming-message",data => {
-    console.log(data)
-    let mensajeneviado = `<div id="mensaje_enviado" class="message sent">
-        <p>${data.mensaje}</p>
-            </div>`
-    document.getElementById("mensajesviejos").innerHTML += mensajeneviado;
-    
-    
-})
