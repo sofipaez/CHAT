@@ -150,7 +150,6 @@ io.on("connection", (socket) => {
         console.log(ingresarmensaje)
         //saveMessage(ingresarmensaje,req.session)
         console.log("INCOMING MESSAGE:", data);
-        io.emit("server-message", {mensaje: "MENSAJE DEL SERVIDOR"});
         io.emit("server-message", data);
     });
 
