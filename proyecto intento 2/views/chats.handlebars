@@ -14,7 +14,7 @@
                 <input type="text" id="text-message" placeholder="Buscar contactos..."><br>
                 {{#each contactos}}
                     <div id="{{this.IDChat}}" onclick="Unirse(this)" class="btn btn-primary" style="display: flow;" title="{{this.NombreChat}}">{{this.NombreChat}}</div>
-                {{/each}}
+                {{/each}} {{!la funcion unirse se encuentra en ws.js}}
             </div>
             
         </div>
@@ -25,7 +25,7 @@
                 <div class="input-container">
                     <input type="text" id="message-input" placeholder="Escribe un mensaje...">
                     <input type="button" onclick="enviarMensaje()" class="btn btn-primary" id="send-button" value="Enviar">
-                </div>
+                </div>{{!la funcion unirse se encuentra en ws.js}}
         </div>
     </section>
     <script

@@ -62,7 +62,7 @@ app.use(session({secret: '123456', resave: true, saveUninitialized: true}));
 app.get('/', function(req, res)
 {
     //Petición GET con URL = "/", lease, página principal.
-    req.session.usuario_login = 0
+    //req.session.usuario_login = 0
     console.log(req.query); //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
     res.render('inicio', null); //Renderizo página "login" sin pasar ningún objeto a Handlebars
 });
@@ -73,7 +73,7 @@ app.get('/login', function(req, res){
     //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
     res.render('login', null); //Renderizo página "home" sin pasar ningún objeto a Handlebars
 });
-
+/*
 app.post('/login', async function(req, res)
 {
     //Petición POST con URL = "/login"
@@ -85,7 +85,7 @@ app.post('/login', async function(req, res)
             res.render('chats', null); //Renderizo página "home" sin pasar ningún objeto a Handlebars
         }
     }
-});
+});*/
 
 
 app.put('/login', async function(req, res)
@@ -93,13 +93,13 @@ app.put('/login', async function(req, res)
     //Petición POST con URL = "/login"
     console.log("Soy un pedido PUT", req.body); 
     //En req.body vamos a obtener el objeto con los parámetros enviados desde el frontend por método POST
-    let admin=false
+
     req.session.idUser = req.body.usuario_login
     let respuesta= await MySQL.realizarQuery(`SELECT * FROM Contactos WHERE IDContacto = "${req.body.usuario_login}" AND Password="${req.body.contraseña_login}"` )
     console.log(respuesta)
     if (respuesta.length>0){
             res.send({validar:true, admin:false})
-        
+            //  VOLVER AL FETCH putJSON en el DOM
         
     } else{
         res.send({validar:false})
@@ -114,14 +114,11 @@ app.delete('/login', function(req, res) {
 });
 
 app.get('/chats',async function(req, res){
-    //Petición GET con URL = "/login"
     console.log("Soy un pedido GET, voy al CHAT", req.query); 
+    //TRAEMOS TODOS LOS CHATS DEL QUE EL USUARIO FORME PARTE
     let chats= await MySQL.realizarQuery(`select NombreChat,Chats.IDChat FROM Chats INNER JOIN Contactos_Chats ON Chats.IDChat = Contactos_Chats.IDChat WHERE IDContacto = "${req.session.idUser}";`)
     console.log(chats);
-    //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
-    res.render('chats',{contactos:chats});
-    //En req.query vamos a obtener el objeto con los parámetros enviados desde el frontend por método GET
-     //Renderizo página "home" sin pasar ningún objeto a Handlebars
+    res.render('chats',{contactos:chats}); //ESTO SE MANDA A chats.handlebars en el each
 });
 
 app.post('/chats', async function(req, res)
@@ -148,9 +145,9 @@ io.on("connection", (socket) => {
     socket.on('incoming-message', data => {
         ingresarmensaje=data.mensaje
         console.log(ingresarmensaje)
-        saveMessage(ingresarmensaje,req.session)
+        saveMessage(ingresarmensaje,req.session) //ES UNA FUNCIÓN QUE SE ENCUENTRA MÁS ABAJO 
         console.log("INCOMING MESSAGE:", data);
-        io.emit("server-message", {mensaje: data.mensaje, user: req.session.idUser});
+        io.emit("server-message", {mensaje: data.mensaje, user: req.session.idUser}); //IR A WS socket.on("server-message",
     });
 
     socket.on('room', async (sala) => {
@@ -164,6 +161,7 @@ io.on("connection", (socket) => {
         req.session.room="room"+sala.chat;
         req.session.save()
         io.to(req.session.room).emit('UnirmealChat', {contacto:contacto, user: req.session.idUser})
+        // ESTO SIGUE EN WS -> socket.on("UnirmealChat",
     })
 
 
@@ -177,7 +175,8 @@ app.put('/mensajesantiguos', async function(req, res) {
     //console.log(req.session.sala)
     //console.log(req.session.idUser)
     if (mensajes_viejos.length>0){
-        res.send({mensajes:mensajes_viejos,idcontacto:req.session.idUser})
+        res.send({mensajes:mensajes_viejos,idcontacto:req.session.idUser}) 
+        //LE ENVIO ESTA INFORMACION AL FETCH DE mensajesviejos() EN EL DOM 
     } else {
         res.send({mensajes: false})
     }

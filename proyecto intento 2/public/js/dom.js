@@ -9,7 +9,7 @@ async function putJSON(data) {
         },
         body: JSON.stringify(data),
       });
-      
+      //VAMOS A VER EL ARMADO DEL APP.PUT('/LOGIN') EN EL INDEX
       //En result obtengo la respuesta
       const result = await response.json();
       console.log("Success:", result);
@@ -42,7 +42,7 @@ function login() {
   }
   //data es el objeto que le paso al back
   putJSON(data)
-  
+  // DE ACA DIRIGIRSE AL FETCH putJSON() que esta más arriba
 }
 
 
@@ -73,6 +73,7 @@ async function mensajesviejos(idChat) {
       },
       body: JSON.stringify({ validar: true, idChat: idChat }), // Envía el ID del chat
     });
+    //VER EN EL INDEX LA PARTE DEL APP.PUT('mensajesantiguos')
 
     // En result obtengo la respuesta
     const result = await response.json();

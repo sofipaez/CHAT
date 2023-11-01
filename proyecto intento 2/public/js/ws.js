@@ -32,9 +32,16 @@ function Unirse(div){
         chat:div.id,
         nombre_contacto:div.title,
     }
-    socket.emit('room', sala)
+    socket.emit('room', sala) // SE ENCUNETRA EN EL INDEX DENTRO DEL IO.ON
     
 }
+socket.on("UnirmealChat",data => {
+    console.log("data.contacto =", data.contacto) // SE VE POR LA CONSOLA DE GOOGLE
+    mensajesviejos() // SE ENCUENTRA EN EL DOM
+    document.getElementById("nombre_contacto").innerHTML =`
+    <h6> ${data.contacto} </h6>`
+    
+})
 
 function enviarMensaje(){
     nuevomensaje=document.getElementById("message-input").value
@@ -42,7 +49,7 @@ function enviarMensaje(){
         data={
             mensaje:nuevomensaje
         }
-        socket.emit("incoming-message", {mensaje:nuevomensaje});
+        socket.emit("incoming-message", {mensaje:nuevomensaje}); //SE ENCUNETRA EN EL INDEX DENTRO DEL IO.ON
         document.getElementById("message-input").value="";
 
         yaEnvie = 1;
@@ -53,13 +60,7 @@ function enviarMensaje(){
     
 
 
-socket.on("UnirmealChat",data => {
-    console.log(data.contacto)
-    mensajesviejos()
-    document.getElementById("nombre_contacto").innerHTML =`
-    <h6> ${data.contacto} </h6>`
-    
-})
+
 $(function(){
     // variables
     var message = $('#chat-message');
